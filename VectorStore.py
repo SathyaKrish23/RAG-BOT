@@ -31,4 +31,20 @@ def store_in_pinecone(chunks: List[str], embeddings: List[List[float]], namespac
         index.upsert(vectors=batch, namespace=namespace)
 
 
+def search_in_pinecone(query_vector, top_k=5, namespace=""):
+    results = index.query(
+        vector=query_vector,
+        top_k=top_k,
+        include_metadata=True,
+        namespace=namespace
+    )
+
+    matched_chunks = []
+
+    for match in results["matches"]:
+        matched_chunks.append(match["metadata"]["text"])
+
+    return matched_chunks
+
+
         
