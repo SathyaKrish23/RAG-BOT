@@ -1,6 +1,6 @@
-from embedder import embed_User_query
-from vectorstore import search_in_pinecone
-from llm import query_llm_with_context
+from Embedder import embed_User_query
+from VectorStore import search_in_pinecone
+from LLM import query_llm_with_context
 
 def process_user_query(query: str):
 
